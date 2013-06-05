@@ -116,7 +116,7 @@ $(document).ready( function(){
 	/**
 	* fast click to work around 300ms delay between clicks on tablets / mobiles
 	*/
-	$(".inc").click(function()
+	$(".inc").fastClick(function()
 		{
 			// don't let incoming remote data display while a click is in progress
 			// we'll get the correct number in the end and avoid a yo-yo effect
