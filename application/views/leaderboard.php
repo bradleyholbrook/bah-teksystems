@@ -13,8 +13,6 @@
 	<meta http-equiv="reply-to" content="bholbrook73@gmail.com">
 	<meta name="creation-date" content="06/04/2013">
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
-	<script type="text/javascript" src="/assets/js/jquery-1.10.1.js"></script>
-	<script type="text/javascript" src="/assets/js/jQuery.fastClick.js"></script>
 </head>
 <body>
 	
@@ -32,6 +30,8 @@
 		
 	</div>
 	
+	<script type="text/javascript" src="/assets/js/jquery-1.10.1.js"></script>
+	<script type="text/javascript" src="/assets/js/jQuery.fastClick.js"></script>
 	<script type="text/javascript" src="/assets/js/leaderboard-controller.js"></script>
 	
 </body>
