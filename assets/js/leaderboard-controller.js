@@ -7,7 +7,8 @@ function pollPlayers()
 	// get selected record for select persistance
 	var selected = $(".leaderboard .selected .name").text();
 	
-	updatePlayerScores = $.post('/index.php/player/index/'+selected).done( function(response)
+	// make a request for the remote values for syncronization
+	updatePlayerScores = $.ajax('/index.php/player/index/'+selected).done( function(response)
 		{
 			// don't overwrite the html if a click is in process.
 			if(clicks.length > 0) return;
@@ -15,6 +16,7 @@ function pollPlayers()
 			// display the results
 			$(".leaderboard").html(response);
 			
+			// assign click action to new html div's.
 			$(".leaderboard .player").click( function(e)
 				{
 					updatePlayerScores.abort();
@@ -40,11 +42,15 @@ function pollPlayers()
 	);
 }
 
+/**
+* jQuery ajax was only sending every 500ms, this bundles the clicks in an array and sends a group of clicks
+* at one time.
+* 
+*/
 function sendClick()
 {
 	if(clicks.length > 0)
 	{
-		console.log(clicks);
 		var count = clicks.length;
 		var name = clicks.pop();
 		clicks = [];
@@ -60,8 +66,15 @@ $(document).ready( function(){
 	*/
 	pollPlayers();
 	
+	/**
+	* fast click to work around 300ms delay between clicks on tablets / mobiles
+	*/
 	$(".inc").fastClick(function(){
 		
+		// don't let incoming remote data display while a click is in progress
+		// we'll get the correct number in the end and avoid a yo-yo effect
+		// in the number display
+		updatePlayerScores.abort();
 		clicks.push($(".selected .name").text());
 		
 		$(".selected .score").html( ($(".selected .score").html() - -5) );
@@ -87,7 +100,8 @@ $(document).ready( function(){
 		).appendTo('.leaderboard');
 		
 	});
-		
+	
+	// look for new clicks to send every second	
 	setInterval(sendClick, 1000);
 	
 });

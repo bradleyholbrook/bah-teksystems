@@ -9,11 +9,13 @@ class Player_model extends CI_Model
 		return $this->db->get('player')->result_array();
 	}
 	
-	public function increase_score($name)
+	public function increase_score($name, $increment=5)
 	{
-		$name = urldecode($name);
+		$increment = (integer)$increment;
+		
+		
 		$this->db->where('name', $name);
-		$this->db->set('score', 'score+5', FALSE);
+		$this->db->set('score', 'score+'.$increment, FALSE);
 		$this->db->update('player');
 	}
 	
