@@ -16,10 +16,10 @@
  * ['mongo_host_db_flag']   If running in auth mode and the user does not have global read/write then set this to true
  */
 
-$config['default']['mongo_hostbase'] = 'localhost:27017';
-$config['default']['mongo_database'] = '';
-$config['default']['mongo_username'] = '';
-$config['default']['mongo_password'] = '';
+$config['default']['mongo_hostbase'] = 'ds027908.mongolab.com:27908';
+$config['default']['mongo_database'] = 'teksystemsample';
+$config['default']['mongo_username'] = 'mongoadmin';
+$config['default']['mongo_password'] = 'j1135#weep';
 $config['default']['mongo_persist']  = TRUE;
 $config['default']['mongo_persist_key']	 = 'ci_persist';
 $config['default']['mongo_replica_set']  = FALSE;
